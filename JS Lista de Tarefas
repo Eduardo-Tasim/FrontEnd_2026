@@ -1,0 +1,25 @@
+const taskInput = document.getElementById('taskInput');
+const taskList = document.getElementById('taskList');
+
+function addTask(){
+  const temTexto = taskInput.value.trim();
+  if(temTexto !== ''){
+    const taskToAdd = document.createElement('li');
+    taskToAdd.innerHTML = `
+    <span>${temTexto}</span>
+    <button onclick="editar(this)">Editar✍</button>
+    <button onclick="excluir(this)">Excluir❌</button>
+    <button onclick="concluir(this)">Concluido✅</button>`
+    taskList.appendChild(taskToAdd);
+  }
+}
+
+function excluir(button){
+  const itemToRemove = button.parentElement;
+  taskList.removeChild(itemToRemove)
+}
+
+function concluir(button){
+  const itemConcluido = button.parentElement;
+  itemConcluido.classList = 'completed';
+}
